@@ -12,6 +12,10 @@ public class Unit : MonoBehaviour
     //pruebas
     public UnitManager manager;
 
+    public Faction faction;
+
+    public Renderer[] renderers;
+
     public bool IsSelected
     {
         get 
@@ -31,13 +35,18 @@ public class Unit : MonoBehaviour
 
         this.manager = GameObject.FindObjectOfType<UnitManager>();
         this.manager.units.Add(this);
+
+        foreach (Renderer r in this.renderers)
+        {
+            r.material = this.faction.materialColor;
+        }
         this.Init();
     }
 
     // ==============================================
     void OnDestroy()
     {
-
+        this.manager.RemoveUnit(this);
     }
     // ==============================================
     public virtual void Init()

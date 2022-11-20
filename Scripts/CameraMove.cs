@@ -13,7 +13,7 @@ public class CameraMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.border = 5;
+        this.border = 10;
         this.screenBorder = new Vector2(Screen.width - this.border, Screen.height - this.border);
         this.middleScreen = new Vector2(Screen.width/2, Screen.height/2);
         
@@ -33,7 +33,7 @@ public class CameraMove : MonoBehaviour
                 this.movement = mouse - this.middleScreen;
                 this.movement.z = this.movement.y;
                 this.movement.y = 0;
-                this.movement = this.movement.normalized /2;
+                this.movement = this.movement.normalized * 5;
 
                 this.cameraAnchor.Translate(this.movement);
             }

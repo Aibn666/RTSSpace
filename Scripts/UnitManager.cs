@@ -30,6 +30,11 @@ public class UnitManager : MonoBehaviour
         this.selecting = false;
     }
 
+    public virtual void RemoveUnit(Unit u)
+    {
+        this.units.Remove(u);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -69,7 +74,6 @@ public class UnitManager : MonoBehaviour
                 }
             }
         }
-
         if(Input.GetMouseButtonUp(0))
         {
             this.selectionBox.End();
@@ -115,8 +119,6 @@ public class UnitManager : MonoBehaviour
             {
                 u.ExecuteOrder(point);
             }
-            //mover el agente
-            //this.agent.SetDestination(point);
         }
     }
 }
